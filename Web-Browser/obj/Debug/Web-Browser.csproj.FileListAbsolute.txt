@@ -1,0 +1,48 @@
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.config
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\bin\Debug\Web-Browser.pdb
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.AssemblyReference.cache
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.Properties.Resources.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.GenerateResource.cache
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.CoreCompileInputs.cache
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.exe
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.pdb
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.SuggestedBindingRedirects.cache
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.Bee.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.addSearchEngine_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.deleteSE_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.verifyClearSE_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.editSE_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.addBookmark_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.deleteBM_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.verifyClearBM_F.resources
+C:\Users\quoch\source\repos\Web-Browser\Web-Browser\obj\Debug\Web_Browser.editBM_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.config
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.pdb
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.Core.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.Core.xml
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Microsoft.Web.WebView2.Wpf.xml
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.AssemblyReference.cache
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.SuggestedBindingRedirects.cache
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.addBookmark_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.addSearchEngine_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.deleteBM_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.deleteSE_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.editBM_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.editSE_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.Bee.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.Properties.Resources.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.verifyClearBM_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web_Browser.verifyClearSE_F.resources
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.GenerateResource.cache
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.CoreCompileInputs.cache
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.csproj.CopyComplete
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.exe
+C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\obj\Debug\Web-Browser.pdb
