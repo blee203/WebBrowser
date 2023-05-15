@@ -207,12 +207,25 @@ namespace Web_Browser
         }
 
 
-        void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)//update when change tab
+        void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
             TabPage current = (sender as TabControl).SelectedTab;
-            if(current!=null) searchBox.Text = current.AccessibleDescription;
-            if(isBookmarked(current.AccessibleDescription)) bookmarkButton.Image= ((System.Drawing.Image)(resources.GetObject("alreadyBookmarkButton.Image")));
-            else bookmarkButton.Image= ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
+            if (current != null)
+            {
+                if (!string.IsNullOrEmpty(current.AccessibleDescription))
+                {
+                    searchBox.Text = current.AccessibleDescription;
+
+                    if (isBookmarked(current.AccessibleDescription))
+                    {
+                        bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("alreadyBookmarkButton.Image")));
+                    }
+                    else
+                    {
+                        bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
+                    }
+                }
+            }
         }
 
         private void deleteSEButton_Click(object sender, EventArgs e)//delete SE
