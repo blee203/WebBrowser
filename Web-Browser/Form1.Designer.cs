@@ -45,6 +45,8 @@ namespace Web_Browser
             this.newTabButton = new System.Windows.Forms.ToolStripButton();
             this.closeTabButton = new System.Windows.Forms.ToolStripButton();
             this.moreButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllTabs = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarksMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addBookmarkButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +62,6 @@ namespace Web_Browser
             this.alreadyBookmarkButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +84,7 @@ namespace Web_Browser
             this.alreadyBookmarkButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1350, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(1350, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -95,7 +95,7 @@ namespace Web_Browser
             this.goBackButton.Image = ((System.Drawing.Image)(resources.GetObject("goBackButton.Image")));
             this.goBackButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(34, 29);
+            this.goBackButton.Size = new System.Drawing.Size(34, 33);
             this.goBackButton.Text = "toolStripButton1";
             this.goBackButton.ToolTipText = "Click to go back";
             this.goBackButton.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -107,7 +107,7 @@ namespace Web_Browser
             this.goForwadButton.Image = ((System.Drawing.Image)(resources.GetObject("goForwadButton.Image")));
             this.goForwadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.goForwadButton.Name = "goForwadButton";
-            this.goForwadButton.Size = new System.Drawing.Size(34, 29);
+            this.goForwadButton.Size = new System.Drawing.Size(34, 33);
             this.goForwadButton.Text = "toolStripButton2";
             this.goForwadButton.ToolTipText = "Click to go forward";
             this.goForwadButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -119,7 +119,7 @@ namespace Web_Browser
             this.reloadButton.Image = ((System.Drawing.Image)(resources.GetObject("reloadButton.Image")));
             this.reloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reloadButton.Name = "reloadButton";
-            this.reloadButton.Size = new System.Drawing.Size(34, 29);
+            this.reloadButton.Size = new System.Drawing.Size(34, 33);
             this.reloadButton.Text = "toolStripButton3";
             this.reloadButton.ToolTipText = "Reload this page";
             this.reloadButton.Click += new System.EventHandler(this.toolStripButton3_Click);
@@ -131,7 +131,7 @@ namespace Web_Browser
             this.stopLoadButton.Image = ((System.Drawing.Image)(resources.GetObject("stopLoadButton.Image")));
             this.stopLoadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.stopLoadButton.Name = "stopLoadButton";
-            this.stopLoadButton.Size = new System.Drawing.Size(34, 29);
+            this.stopLoadButton.Size = new System.Drawing.Size(34, 33);
             this.stopLoadButton.Text = "toolStripButton4";
             this.stopLoadButton.ToolTipText = "Stop loading this page";
             this.stopLoadButton.Click += new System.EventHandler(this.toolStripButton4_Click);
@@ -143,14 +143,15 @@ namespace Web_Browser
             this.SEName.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SEName.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SEName.Name = "SEName";
-            this.SEName.Size = new System.Drawing.Size(71, 29);
+            this.SEName.Size = new System.Drawing.Size(71, 33);
             this.SEName.Text = "Google";
+            this.SEName.Click += new System.EventHandler(this.SEName_Click);
             // 
             // searchBox
             // 
             this.searchBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(562, 34);
+            this.searchBox.Size = new System.Drawing.Size(562, 38);
             this.searchBox.ToolTipText = "Enter a keyword/url here";
             this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
             // 
@@ -161,7 +162,7 @@ namespace Web_Browser
             this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
             this.searchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(34, 29);
+            this.searchButton.Size = new System.Drawing.Size(34, 33);
             this.searchButton.Text = "toolStripButton5";
             this.searchButton.ToolTipText = "Search keyword or Navigate URL";
             this.searchButton.Click += new System.EventHandler(this.toolStripButton5_Click);
@@ -173,7 +174,7 @@ namespace Web_Browser
             this.bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
             this.bookmarkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bookmarkButton.Name = "bookmarkButton";
-            this.bookmarkButton.Size = new System.Drawing.Size(34, 29);
+            this.bookmarkButton.Size = new System.Drawing.Size(34, 33);
             this.bookmarkButton.Text = "toolStripButton6";
             this.bookmarkButton.ToolTipText = "Bookmark this tab";
             this.bookmarkButton.Click += new System.EventHandler(this.bookmarkButton_Click);
@@ -187,7 +188,7 @@ namespace Web_Browser
             this.newTabButton.Image = ((System.Drawing.Image)(resources.GetObject("newTabButton.Image")));
             this.newTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newTabButton.Name = "newTabButton";
-            this.newTabButton.Size = new System.Drawing.Size(87, 29);
+            this.newTabButton.Size = new System.Drawing.Size(87, 33);
             this.newTabButton.Text = "New tab";
             this.newTabButton.ToolTipText = "New tab";
             this.newTabButton.Click += new System.EventHandler(this.toolStripButton7_Click);
@@ -201,7 +202,7 @@ namespace Web_Browser
             this.closeTabButton.Image = ((System.Drawing.Image)(resources.GetObject("closeTabButton.Image")));
             this.closeTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeTabButton.Name = "closeTabButton";
-            this.closeTabButton.Size = new System.Drawing.Size(94, 29);
+            this.closeTabButton.Size = new System.Drawing.Size(94, 33);
             this.closeTabButton.Text = "Close tab";
             this.closeTabButton.ToolTipText = "Close selected tab";
             this.closeTabButton.Click += new System.EventHandler(this.toolStripButton8_Click);
@@ -221,14 +222,29 @@ namespace Web_Browser
             this.moreButton.Image = ((System.Drawing.Image)(resources.GetObject("moreButton.Image")));
             this.moreButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.moreButton.Name = "moreButton";
-            this.moreButton.Size = new System.Drawing.Size(41, 29);
+            this.moreButton.Size = new System.Drawing.Size(41, 33);
             this.moreButton.Text = "toolStripSplitButton1";
             this.moreButton.ToolTipText = "More control of Bee";
+            this.moreButton.ButtonClick += new System.EventHandler(this.moreButton_ButtonClick);
+            // 
+            // newTabToolStripMenuItem
+            // 
+            this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
+            this.newTabToolStripMenuItem.Text = "New Tab";
+            this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripMenuItem_Click);
+            // 
+            // closeTabToolStripMenuItem
+            // 
+            this.closeTabToolStripMenuItem.Name = "closeTabToolStripMenuItem";
+            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
+            this.closeTabToolStripMenuItem.Text = "Close Tab";
+            this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
             // 
             // closeAllTabs
             // 
             this.closeAllTabs.Name = "closeAllTabs";
-            this.closeAllTabs.Size = new System.Drawing.Size(270, 34);
+            this.closeAllTabs.Size = new System.Drawing.Size(224, 34);
             this.closeAllTabs.Text = "Close all tabs";
             this.closeAllTabs.ToolTipText = "Close all tabs";
             this.closeAllTabs.Click += new System.EventHandler(this.closeAllTabs_Click);
@@ -240,7 +256,7 @@ namespace Web_Browser
             this.deleteBookmarkButton,
             this.editBookmarkButton});
             this.bookmarksMenu.Name = "bookmarksMenu";
-            this.bookmarksMenu.Size = new System.Drawing.Size(270, 34);
+            this.bookmarksMenu.Size = new System.Drawing.Size(224, 34);
             this.bookmarksMenu.Text = "Bookmarks";
             this.bookmarksMenu.ToolTipText = "Options and list of bookmarks";
             this.bookmarksMenu.Click += new System.EventHandler(this.bookmarks_Click);
@@ -272,7 +288,7 @@ namespace Web_Browser
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.historyToolStripMenuItem.Text = "History";
             // 
             // searchEngineToolStripMenuItem
@@ -283,7 +299,7 @@ namespace Web_Browser
             this.editSEButton,
             this.googleToolStripMenuItem});
             this.searchEngineToolStripMenuItem.Name = "searchEngineToolStripMenuItem";
-            this.searchEngineToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.searchEngineToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.searchEngineToolStripMenuItem.Text = "Search Engine";
             this.searchEngineToolStripMenuItem.ToolTipText = "Options and list of search engines";
             this.searchEngineToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SearchEngineToolStripMenuItem_DropDownItemClicked);
@@ -323,7 +339,7 @@ namespace Web_Browser
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 34);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.ToolTipText = "Some info about this web browser";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.addAbout_Click);
@@ -345,7 +361,7 @@ namespace Web_Browser
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1342, 983);
+            this.tabPage1.Size = new System.Drawing.Size(1342, 979);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Tab";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -354,27 +370,13 @@ namespace Web_Browser
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 34);
+            this.tabControl1.Location = new System.Drawing.Point(0, 38);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1350, 1016);
+            this.tabControl1.Size = new System.Drawing.Size(1350, 1012);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
-            // 
-            // newTabToolStripMenuItem
-            // 
-            this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.newTabToolStripMenuItem.Text = "New Tab";
-            this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripMenuItem_Click);
-            // 
-            // closeTabToolStripMenuItem
-            // 
-            this.closeTabToolStripMenuItem.Name = "closeTabToolStripMenuItem";
-            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.closeTabToolStripMenuItem.Text = "Close Tab";
-            this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
             // 
             // Bee
             // 
