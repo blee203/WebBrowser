@@ -13,12 +13,22 @@ namespace Web_Browser
 {
     public partial class addSearchEngine_F : Form
     {
+        #region initial
+
         public addSearchEngine_F()
         {
             InitializeComponent();
         }
+        private void addSearchEngine_F_Load(object sender, EventArgs e)
+        {
+        }
         string FName = "SE_Name.txt",FURL= "SE_URL.txt";
-        private void Add_Click(object sender, EventArgs e)
+
+        #endregion
+
+        #region buttons
+
+        private void Add_Click(object sender, EventArgs e) //add button
         {
             if(SEName.Text==""||SEURL.Text=="")
                 { MessageBox.Show("Not enough information =((");return; }
@@ -33,15 +43,13 @@ namespace Web_Browser
             }
             this.Close();
         }
-
-        private void addSearchEngine_F_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void Cancel_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)//cancel button
         {
             this.Close();   
         }
+        #endregion
+
+        #region support functions 
         private void checkName()
         {
             string[] Nlines = File.ReadAllLines(FName);
@@ -50,5 +58,6 @@ namespace Web_Browser
                 if(line==SEName.Text) { MessageBox.Show("Search engine's name already exist...");return; }
             }
         }
+        #endregion
     }
 }

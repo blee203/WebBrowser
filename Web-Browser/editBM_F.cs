@@ -19,6 +19,8 @@ namespace Web_Browser
             InitializeComponent();
         }
         List<int> index = new List<int> { };
+        string[] linesURL = File.ReadAllLines("BM_URL.txt");
+        string[] linesName = File.ReadAllLines("BM_Name.txt");
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -28,13 +30,13 @@ namespace Web_Browser
         private void findBMButton_Click(object sender, EventArgs e)
         {
             if (BMName_TBx.Text == "") { MessageBox.Show("Not enough information =<"); return; }
-            string[] linesURL = File.ReadAllLines("BM_URL.txt");
-            string[] linesName = File.ReadAllLines("BM_Name.txt");
             for (int i = 0; i < linesName.Length; i++)
             {
-                if (linesName[i] == BMName_TBx.Text)
+                if (linesName[i].Contains(BMName_TBx.Text))
                 {
-                    URLList.Text += linesURL[i] + "\n";
+                    string[] row = { linesName[i], linesURL[i] };
+                    ListViewItem lvi = new ListViewItem(row);
+                    BM_List.Items.Add(lvi);
                     index.Add(i);
                 }
             }
@@ -46,26 +48,27 @@ namespace Web_Browser
             label2.Visible = true;
             label3.Visible = true;
             BMURL_TBx.Visible = true;
-            URLList.Visible = true;
+            BM_List.Visible = true;
             editThisBMButton.Visible = true;
             findBMButton.Visible = false;
+            BMName_TBx.Text = "";
             BMName_TBx.ReadOnly = true;
-
+            BMURL_TBx.ReadOnly = true;
         }
 
         private void editThisBMButton_Click(object sender, EventArgs e)
         {
-            string[] linesURL = File.ReadAllLines("BM_URL.txt");
             for (int i = 0; i < index.Count; i++)
             {
                 if (linesURL[index[i]] == BMURL_TBx.Text)
                 {
                     findBMButton.Visible = false;
                     editThisBMButton.Visible = false;
-                    URLList.Visible = false;
+                    BM_List.Visible = false;
                     label3.Visible = false;
                     saveButton.Visible = true;
                     BMName_TBx.ReadOnly = false;
+                    BMURL_TBx.ReadOnly = false;
                     BMURL_TBx.Text = linesURL[index[i]];
                     index[0] = index[i];
                     return;
@@ -102,5 +105,11 @@ namespace Web_Browser
             File.Move(tempF, FileName);
         }
 
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BM_List.SelectedItems.Count == 0) return;
+            BMName_TBx.Text = BM_List.SelectedItems[0].Text;
+            BMURL_TBx.Text = BM_List.SelectedItems[0].SubItems[1].Text;
+        }
     }
 }

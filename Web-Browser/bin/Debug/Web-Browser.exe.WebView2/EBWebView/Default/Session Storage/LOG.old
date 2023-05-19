@@ -1,3 +1,6 @@
-2023/05/16-01:45:33.016 3054 Reusing MANIFEST C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
-2023/05/16-01:45:33.020 3054 Recovering log #3
-2023/05/16-01:45:33.034 3054 Reusing old log C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/000003.log 
+2023/05/19-23:00:43.284 3914 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
+2023/05/19-23:00:43.289 3914 Recovering log #3
+2023/05/19-23:00:43.293 3914 Reusing old log D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/000003.log 
+2023/05/19-23:01:19.186 354c Level-0 table #5: started
+2023/05/19-23:01:19.193 354c Level-0 table #5: 14621 bytes OK
+2023/05/19-23:01:19.195 354c Delete type=0 #3

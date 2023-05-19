@@ -23,13 +23,14 @@ namespace Web_Browser
         {
 
         }
+        string[] linesURL = File.ReadAllLines("BM_URL.txt");
+        string[] linesName = File.ReadAllLines("BM_Name.txt");
         List<int> index=new List<int> { };
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] linesURL = File.ReadAllLines("BM_URL.txt");
             for(int i = 0; i < index.Count; i++)
             {
-                if (linesURL[index[i]] == BMURL_TBx.Text)
+                if (linesURL[index[i]] == BMURL_TBx.Text && linesName[index[i]] == BMName_TBx.Text)
                 {
                     deleteLineOfFile(index[i], "BM_Name.txt");
                     deleteLineOfFile(index[i], "BM_URL.txt");
@@ -70,20 +71,21 @@ namespace Web_Browser
             File.Delete("BM_Name.txt");
             File.Delete("BM_URL.txt");
             using (var stream = File.Create("BM_Name.txt"))
-                File.Create("BM_URL.txt");
+            using (var stream_ = File.Create("BM_URL.txt")) { }
             this.Close();
         }
 
         private void findBM_Click(object sender, EventArgs e)
         {
             if (BMName_TBx.Text == "") { MessageBox.Show("Not enough information =<"); return; }
-            string[] linesURL = File.ReadAllLines("BM_URL.txt");
-            string[] linesName = File.ReadAllLines("BM_Name.txt");
+            
             for (int i = 0; i < linesName.Length; i++)
             {
-                if (linesName[i] == BMName_TBx.Text) 
+                if (linesName[i].Contains(BMName_TBx.Text)|| linesName[i].Contains(BMName_TBx.Text.ToUpper())|| linesName[i].Contains(BMName_TBx.Text.ToLower())) 
                 {
-                    URLList.Text += linesURL[i]+"\n";
+                    string[] row = { linesName[i], linesURL[i] };
+                    ListViewItem lvi = new ListViewItem(row);
+                    BM_List.Items.Add(lvi);
                     index.Add(i);
                 }
             }
@@ -95,11 +97,18 @@ namespace Web_Browser
             label2.Visible = true;
             label3.Visible = true;
             BMURL_TBx.Visible=true;
-            URLList.Visible=true;
+            BM_List.Visible=true;
             deleteButton.Visible=true;
             deleteAllBMButton.Visible=true;
             findBM.Visible=false;
-            BMName_TBx.ReadOnly = true;
+            BMName_TBx.Text = "";
+        }
+
+        private void BM_List_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BM_List.SelectedItems.Count == 0) return;
+            BMName_TBx.Text = BM_List.SelectedItems[0].Text;
+            BMURL_TBx.Text = BM_List.SelectedItems[0].SubItems[1].Text;
         }
     }
 }
