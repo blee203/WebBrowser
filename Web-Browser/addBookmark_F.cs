@@ -15,17 +15,23 @@ namespace Web_Browser
 {
     public partial class addBookmark_F : Form
     {
+        #region initial
+
         public addBookmark_F()
         {
             InitializeComponent();
         }
-
         private void addBookmark_F_Load(object sender, EventArgs e)
         {
 
         }
         string FName = "BM_Name.txt", FURL = "BM_URL.txt";
-        private void Add_Click(object sender, EventArgs e)
+
+        #endregion
+
+        #region buttons
+
+        private void Add_Click(object sender, EventArgs e)//add button
         {
             if (BMName.Text == "" || BMURL.Text == "")
             { MessageBox.Show("Not enough information =(("); return; }
@@ -39,10 +45,11 @@ namespace Web_Browser
             }
             this.Close();
         }
-
-        private void Cancel_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)//cancel button
         {
             this.Close();
         }
+
+        #endregion
     }
 }

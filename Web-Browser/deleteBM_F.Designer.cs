@@ -39,7 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.BMURL_TBx = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.URLList = new System.Windows.Forms.RichTextBox();
+            this.BM_List = new System.Windows.Forms.ListView();
+            this.BMName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BMURL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -129,18 +131,32 @@
             this.label3.Text = "URLs of bookmarks have the name";
             this.label3.Visible = false;
             // 
-            // URLList
+            // BM_List
             // 
-            this.URLList.AutoWordSelection = true;
-            this.URLList.DetectUrls = false;
-            this.URLList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.URLList.Location = new System.Drawing.Point(14, 123);
-            this.URLList.Name = "URLList";
-            this.URLList.ReadOnly = true;
-            this.URLList.Size = new System.Drawing.Size(624, 271);
-            this.URLList.TabIndex = 9;
-            this.URLList.Text = "";
-            this.URLList.Visible = false;
+            this.BM_List.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BMName,
+            this.BMURL});
+            this.BM_List.FullRowSelect = true;
+            this.BM_List.HideSelection = false;
+            this.BM_List.Location = new System.Drawing.Point(12, 116);
+            this.BM_List.MultiSelect = false;
+            this.BM_List.Name = "BM_List";
+            this.BM_List.Size = new System.Drawing.Size(626, 278);
+            this.BM_List.TabIndex = 9;
+            this.BM_List.UseCompatibleStateImageBehavior = false;
+            this.BM_List.View = System.Windows.Forms.View.Details;
+            this.BM_List.Visible = false;
+            this.BM_List.SelectedIndexChanged += new System.EventHandler(this.BM_List_SelectedIndexChanged);
+            // 
+            // BMName
+            // 
+            this.BMName.Text = "Bookmark\'s name";
+            this.BMName.Width = 161;
+            // 
+            // BMURL
+            // 
+            this.BMURL.Text = "Bookmark\'s URL";
+            this.BMURL.Width = 449;
             // 
             // deleteBM_F
             // 
@@ -149,7 +165,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.URLList);
+            this.Controls.Add(this.BM_List);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BMURL_TBx);
             this.Controls.Add(this.label2);
@@ -178,6 +194,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox BMURL_TBx;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox URLList;
+        private System.Windows.Forms.ListView BM_List;
+        private System.Windows.Forms.ColumnHeader BMName;
+        private System.Windows.Forms.ColumnHeader BMURL;
     }
 }

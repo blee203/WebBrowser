@@ -67,8 +67,8 @@ namespace Web_Browser
             if(f.DialogResult == DialogResult.No) { return; }
             File.Delete("SE_Name.txt");
             File.Delete("SE_URL.txt");
-            using (var stream = File.Create("SE_Name.txt")) 
-                File.Create("SE_URL.txt");
+            using (var stream = File.Create("SE_Name.txt"))
+            using (var stream_ = File.Create("SE_URL.txt")) { }
             this.Close();
         }
     }
