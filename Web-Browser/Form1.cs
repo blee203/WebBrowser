@@ -58,6 +58,7 @@ namespace Web_Browser
             }
             webB = new WebView2() { Parent=tabPage1,Dock=DockStyle.Fill };//tạo web browser mới
             await webB.EnsureCoreWebView2Async();
+            webB.NavigationCompleted += WebView_NavigationCompleted;
 
         }
         void addSE(int index, string name,string url)//add SE
@@ -113,7 +114,6 @@ namespace Web_Browser
                 webB.CoreWebView2.Navigate(searchText);
             else
                 webB.CoreWebView2.Navigate(searchEngineDefault + searchText);
-            webB.NavigationCompleted += WebView_NavigationCompleted;
         }
 
         private void toolStripTextBox1_KeyPress(object sender, KeyPressEventArgs e)//nhấn enter tìm kiếm
@@ -121,14 +121,17 @@ namespace Web_Browser
             if (e.KeyChar == (char)Keys.Enter) 
                 toolStripButton5_Click(null,EventArgs.Empty);
        }
-        private void addNewTab()
+        private async void addNewTab()
         {
             TabPage newTab = new TabPage();
             newTab.Text = "New Tab";
             tabControl1.Controls.Add(newTab);
             tabControl1.SelectTab(tabControl1.TabCount - 1);
             webB = new WebView2() { Parent = newTab, Dock = DockStyle.Fill };
+            await webB.EnsureCoreWebView2Async();
             searchBox.Text = "";
+            webB.NavigationCompleted += WebView_NavigationCompleted;
+
         }
         private void toolStripButton7_Click(object sender, EventArgs e)//nút new tab
         {
@@ -307,6 +310,16 @@ namespace Web_Browser
         private void closeTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             closeTab();
+        }
+
+        private void moreButton_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SEName_Click(object sender, EventArgs e)
+        {
+
         }
 
         void addThisBookmark()//bookmark current tab
