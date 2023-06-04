@@ -21,6 +21,7 @@ namespace Web_Browser
         {
 
         }
+        //------------------------------------------------------------
         private void Yes_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;

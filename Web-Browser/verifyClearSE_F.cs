@@ -16,12 +16,11 @@ namespace Web_Browser
         {
             InitializeComponent();
         }
-
+        //----------------------------------------------
         private void Yes_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }
-
         private void No_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No;

@@ -80,7 +80,7 @@
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Visible = false;
-            this.deleteButton.Click += new System.EventHandler(this.button2_Click);
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // deleteAllBMButton
             // 

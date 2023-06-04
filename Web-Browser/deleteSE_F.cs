@@ -14,12 +14,15 @@ namespace Web_Browser
 {
     public partial class deleteSE_F : Form
     {
+        #region initial
         public deleteSE_F()
         {
             InitializeComponent();
         }
+        #endregion
 
-        private void button2_Click(object sender, EventArgs e)
+        #region button
+        private void deleteButton_Click(object sender, EventArgs e)
         {
             if (SETextBox.Text == "") { MessageBox.Show("Not enough information =<"); return; }
             int index=indexOfLines(SETextBox.Text);
@@ -28,33 +31,7 @@ namespace Web_Browser
             deleteLineOfFile(index, "SE_URL.txt");
             this.Close();
         }
-        void deleteLineOfFile(int index,string FileName)
-        {
-            string tempF = Path.GetTempFileName();
-            using(StreamReader sr = new StreamReader(FileName))
-            using (StreamWriter sw = new StreamWriter(tempF))
-            {
-                string line;
-                int i = 0;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if(i!=index)
-                        sw.WriteLine(line);
-                    i++;
-                }
-            }
-            File.Delete(FileName);
-            File.Move(tempF, FileName);
-        }
-        int indexOfLines(string Name)
-        {
-            string[] lines = File.ReadAllLines("SE_Name.txt");
-            for(int i=0;i<lines.Length; i++)
-            {
-                if (lines[i] == Name) { return i;}
-            }
-            return -1;
-        }
+        
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -71,5 +48,37 @@ namespace Web_Browser
             using (var stream_ = File.Create("SE_URL.txt")) { }
             this.Close();
         }
+        #endregion
+
+        #region support function
+        void deleteLineOfFile(int index, string FileName)
+        {
+            string tempF = Path.GetTempFileName();
+            using (StreamReader sr = new StreamReader(FileName))
+            using (StreamWriter sw = new StreamWriter(tempF))
+            {
+                string line;
+                int i = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (i != index)
+                        sw.WriteLine(line);
+                    i++;
+                }
+            }
+            File.Delete(FileName);
+            File.Move(tempF, FileName);
+        }
+
+        int indexOfLines(string Name)
+        {
+            string[] lines = File.ReadAllLines("SE_Name.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i] == Name) { return i; }
+            }
+            return -1;
+        }
+        #endregion
     }
 }
