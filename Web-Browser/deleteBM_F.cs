@@ -14,19 +14,23 @@ namespace Web_Browser
 {
     public partial class deleteBM_F : Form
     {
+        #region initial
         public deleteBM_F()
         {
             InitializeComponent();
         }
+        string[] linesURL = File.ReadAllLines("BM_URL.txt");
+        string[] linesName = File.ReadAllLines("BM_Name.txt");
+        List<int> index = new List<int> { };
 
         private void deleteBM_F_Load(object sender, EventArgs e)
         {
 
         }
-        string[] linesURL = File.ReadAllLines("BM_URL.txt");
-        string[] linesName = File.ReadAllLines("BM_Name.txt");
-        List<int> index=new List<int> { };
-        private void button2_Click(object sender, EventArgs e)
+        #endregion
+
+        #region button
+        private void deleteButton_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < index.Count; i++)
             {
@@ -40,24 +44,7 @@ namespace Web_Browser
             }
             MessageBox.Show("Bookmark unknown @~@");
         }
-        void deleteLineOfFile(int index, string FileName)
-        {
-            string tempF = Path.GetTempFileName();
-            using (StreamReader sr = new StreamReader(FileName))
-            using (StreamWriter sw = new StreamWriter(tempF))
-            {
-                string line;
-                int i = 0;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (i != index)
-                        sw.WriteLine(line);
-                    i++;
-                }
-            }
-            File.Delete(FileName);
-            File.Move(tempF, FileName);
-        }
+        
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -103,6 +90,27 @@ namespace Web_Browser
             findBM.Visible=false;
             BMName_TBx.Text = "";
         }
+        #endregion
+
+        #region support function
+        void deleteLineOfFile(int index, string FileName)
+        {
+            string tempF = Path.GetTempFileName();
+            using (StreamReader sr = new StreamReader(FileName))
+            using (StreamWriter sw = new StreamWriter(tempF))
+            {
+                string line;
+                int i = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (i != index)
+                        sw.WriteLine(line);
+                    i++;
+                }
+            }
+            File.Delete(FileName);
+            File.Move(tempF, FileName);
+        }
 
         private void BM_List_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -110,5 +118,6 @@ namespace Web_Browser
             BMName_TBx.Text = BM_List.SelectedItems[0].Text;
             BMURL_TBx.Text = BM_List.SelectedItems[0].SubItems[1].Text;
         }
+        #endregion
     }
 }

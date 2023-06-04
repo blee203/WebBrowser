@@ -14,6 +14,7 @@ namespace Web_Browser
 {
     public partial class editBM_F : Form
     {
+        #region initial
         public editBM_F()
         {
             InitializeComponent();
@@ -21,8 +22,10 @@ namespace Web_Browser
         List<int> index = new List<int> { };
         string[] linesURL = File.ReadAllLines("BM_URL.txt");
         string[] linesName = File.ReadAllLines("BM_Name.txt");
+        #endregion
 
-        private void button2_Click(object sender, EventArgs e)
+        #region button
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -85,6 +88,9 @@ namespace Web_Browser
             editLineOfFile(index[0], BMURL_TBx.Text, "BM_URL.txt");
             this.Close();
         }
+        #endregion
+
+        #region support function
         void editLineOfFile(int index, string lineAF, string FileName)
         {
             string tempF = Path.GetTempFileName();
@@ -111,5 +117,6 @@ namespace Web_Browser
             BMName_TBx.Text = BM_List.SelectedItems[0].Text;
             BMURL_TBx.Text = BM_List.SelectedItems[0].SubItems[1].Text;
         }
+        #endregion
     }
 }

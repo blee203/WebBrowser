@@ -21,7 +21,7 @@ namespace Web_Browser
         {
             this.DialogResult = DialogResult.OK;
         }
-
+        //----------------------------------------------
         private void No_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No;

@@ -9,6 +9,8 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace Web_Browser
 {
     public partial class Bee : Form
@@ -23,8 +25,9 @@ namespace Web_Browser
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bee));
         string searchText, searchEngineDefault = "https://www.google.com/search?q=";//search engine mặc định
         WebView2 webB;
-        int defItemOfSE = 4, defItemOfBM = 3, defItemOfH = 2;
+        int defItemOfSE = 4, defItemOfBM = 3, defItemOfH = 3;
         string myIP = Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where<IPAddress>(x => x.AddressFamily == AddressFamily.InterNetwork).FirstOrDefault().ToString();
+        System.Windows.Forms.ListView lv;
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -63,7 +66,7 @@ namespace Web_Browser
 
             webB = new WebView2() { Parent = tabControl1.SelectedTab, Dock = DockStyle.Fill };
             await webB.EnsureCoreWebView2Async();
-
+            webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
         }
         #endregion
 
@@ -85,14 +88,13 @@ namespace Web_Browser
         {
             webB.Stop();
         }
-        private void toolStripButton5_Click(object sender, EventArgs e)//nút tìm kiếm
+        private void searchButton_Click(object sender, EventArgs e)//nút tìm kiếm
         {
             searchText = searchBox.Text;
             if (searchText.Contains("www.") || searchText.Contains("http"))
                 webB.CoreWebView2.Navigate(searchText);
             else
                 webB.CoreWebView2.Navigate(searchEngineDefault + searchText);
-            webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
         }
         private void bookmarkButton_Click(object sender, EventArgs e)//bookmark
         {
@@ -184,6 +186,13 @@ namespace Web_Browser
             form.ShowDialog();
             updateBM();
         }
+        private void bookmarkMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.AccessibleDescription == null) return;
+            searchBox.Text = e.ClickedItem.ToolTipText;
+            searchButton.PerformClick();
+        }
+
         #endregion
 
         #region SE's buttons
@@ -217,7 +226,6 @@ namespace Web_Browser
 
             searchEngineDefault = File.ReadAllLines("SE_URL.txt")[int.Parse(e.ClickedItem.AccessibleDescription)];//change SE
             SEName.Text = e.ClickedItem.Text;
-
         }
 
         #endregion
@@ -231,21 +239,22 @@ namespace Web_Browser
             File.Delete("H_DateTime.txt");
             using (var s = File.Create("H_Name.txt"))
             using (var s1 = File.Create("H_URL.txt"))
-                File.Create("H_DateTime.txt");
+            using (var s2 = File.Create("H_DateTime.txt")) { }
             updateH();
         }
-        private void historyToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void historyToolStripMenuItem1_Click(object sender, EventArgs e)//open history view
         {
             TabPage newTab = new TabPage();
             newTab.Size = new System.Drawing.Size(1192, 620);
             newTab.Text = "History";
             newTab.UseVisualStyleBackColor = true;
 
-            ListView lv=new ListView() { Dock=DockStyle.Fill, 
+            lv=new System.Windows.Forms.ListView() { Dock=DockStyle.Fill, 
                 FullRowSelect = true, 
                 HideSelection = false ,
                 MultiSelect = false,
                 View = System.Windows.Forms.View.Details,
+                 
             };
             lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             new ColumnHeader(){ Text = "Time", Width = 205 },
@@ -253,7 +262,7 @@ namespace Web_Browser
             new ColumnHeader(){ Text = "Page\'s URL", Width = 427 },
             });
             string[] linesName = File.ReadAllLines("H_Name.txt"), linesURL = File.ReadAllLines("H_URL.txt"), linesDT = File.ReadAllLines("H_DateTime.txt");
-            for (int i = 0; i < linesName.Length; i++)
+            for (int i = 0; i < linesName.Count(); i++)
             {
                 string[] row = { linesDT[i], linesName[i], linesURL[i] };
                 ListViewItem lvi = new ListViewItem(row);
@@ -266,8 +275,41 @@ namespace Web_Browser
             tabControl1.SelectTab(tabControl1.TabCount - 1);
 
             searchBox.Text = "";
-
+            lv.MouseDoubleClick += new MouseEventHandler(historyViewItem_DoubleClicked);
         }
+
+        private async void historyViewItem_DoubleClicked(object sender, MouseEventArgs e)//Navigate web from history view
+        {
+            ListViewHitTestInfo info = lv.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+
+            if (item != null)
+            {
+                TabPage newTab = new TabPage();
+                newTab.Size = new System.Drawing.Size(1192, 620);
+                newTab.Text = "New Tab";
+                newTab.UseVisualStyleBackColor = true;
+
+                webB = new WebView2() { Dock = DockStyle.Fill };
+                newTab.Controls.Add(webB);
+
+                tabControl1.Controls.Add(newTab);
+                tabControl1.SelectTab(tabControl1.TabCount - 1);
+
+                await webB.EnsureCoreWebView2Async();
+                webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
+                searchBox.Text = item.SubItems[2].Text;
+                searchButton.PerformClick();
+            }
+        }
+
+        private void historyMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)//Navigate web from recent history
+        {
+            if (e.ClickedItem.AccessibleDescription == null) return;
+            searchBox.Text = e.ClickedItem.ToolTipText;
+            searchButton.PerformClick();
+        }
+
 
         #endregion
 
@@ -289,6 +331,7 @@ namespace Web_Browser
             tabControl1.SelectTab(tabControl1.TabCount - 1);
 
             await webB.EnsureCoreWebView2Async();
+            webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
             searchBox.Text = "";
         }
         private void closeTab()//close tab
@@ -369,7 +412,6 @@ namespace Web_Browser
             }
             File.Delete("H_Name.txt");
             File.Move(tempF, "H_Name.txt");
-
             tempF = Path.GetTempFileName();
             using (var sw = new StreamWriter(tempF))
             {
@@ -382,7 +424,6 @@ namespace Web_Browser
             }
             File.Delete("H_URL.txt");
             File.Move(tempF, "H_URL.txt");
-
             tempF = Path.GetTempFileName();
             using (var sw = new StreamWriter(tempF))
             {
@@ -401,10 +442,10 @@ namespace Web_Browser
 
         #region support user experience
 
-        private void toolStripTextBox1_KeyPress(object sender, KeyPressEventArgs e)//nhấn enter tìm kiếm
+        private void searchBox_KeyPress(object sender, KeyPressEventArgs e)//nhấn enter tìm kiếm
         {
             if (e.KeyChar == (char)Keys.Enter)
-                toolStripButton5_Click(null, EventArgs.Empty);
+                searchButton.PerformClick();
         }
         private void WebView_ContentLoaded(object sender, CoreWebView2DOMContentLoadedEventArgs e)//cập nhật tên tab, URL, bookmark
         {
@@ -425,7 +466,6 @@ namespace Web_Browser
                 if (!string.IsNullOrEmpty(current.AccessibleDescription))
                 {
                     searchBox.Text = current.AccessibleDescription;
-                    //recordHistory2LocalFile(current.Text);
                     if (isBookmarked(current.AccessibleDescription))
                     {
                         bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("alreadyBookmarkButton.Image")));
@@ -468,10 +508,9 @@ namespace Web_Browser
                 historyMenu.DropDownItems.RemoveAt(defItemOfH);
             }
             string[] lines = File.ReadAllLines("H_Name.txt"), linesURL = File.ReadAllLines("H_URL.txt");
-            for (int i = 0; i < lines.Length; i++)
-            {
-                addH(historyMenu.DropDownItems.Count - defItemOfH, lines[i], linesURL[i]);
-            }
+            for (int i = 0; i < 10; i++)
+                try { addH(historyMenu.DropDownItems.Count - defItemOfH, lines[i], linesURL[i]); } 
+                catch { continue; }
         }
 
         #endregion

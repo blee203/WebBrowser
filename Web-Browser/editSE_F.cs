@@ -14,11 +14,15 @@ namespace Web_Browser
 {
     public partial class editSE_F : Form
     {
+        #region initial
         public editSE_F()
         {
             InitializeComponent();
         }
         int index;
+        #endregion
+
+        #region button
         private void editThisSEButton_Click(object sender, EventArgs e)
         {
             if (SEName_TBx.Text == "") { MessageBox.Show("Not enough information =<"); return; }
@@ -59,15 +63,6 @@ namespace Web_Browser
             }
 
         }
-        int indexOfLines(string Name)
-        {
-            string[] lines = File.ReadAllLines("SE_Name.txt");
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (lines[i] == Name) { return i; }
-            }
-            return -1;
-        }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -82,6 +77,19 @@ namespace Web_Browser
             editLineOfFile(index, SEURL_TBx.Text, "SE_URL.txt");
             this.Close();
         }
+        #endregion
+
+        #region support function
+        int indexOfLines(string Name)
+        {
+            string[] lines = File.ReadAllLines("SE_Name.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i] == Name) { return i; }
+            }
+            return -1;
+        }
+
         void editLineOfFile(int index,string lineAF, string FileName)
         {
             string tempF = Path.GetTempFileName();
@@ -101,6 +109,6 @@ namespace Web_Browser
             File.Delete(FileName);
             File.Move(tempF, FileName);
         }
-
+        #endregion
     }
 }

@@ -53,6 +53,9 @@ namespace Web_Browser
             this.deleteBookmarkButton = new System.Windows.Forms.ToolStripMenuItem();
             this.editBookmarkButton = new System.Windows.Forms.ToolStripMenuItem();
             this.historyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recentHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchEngineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSearchEngine = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteSEButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +65,6 @@ namespace Web_Browser
             this.alreadyBookmarkButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -154,7 +155,7 @@ namespace Web_Browser
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(500, 27);
             this.searchBox.ToolTipText = "Enter a keyword/url here";
-            this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBox1_KeyPress);
+            this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBox_KeyPress);
             // 
             // searchButton
             // 
@@ -166,7 +167,7 @@ namespace Web_Browser
             this.searchButton.Size = new System.Drawing.Size(29, 24);
             this.searchButton.Text = "toolStripButton5";
             this.searchButton.ToolTipText = "Search keyword or Navigate URL";
-            this.searchButton.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // bookmarkButton
             // 
@@ -260,6 +261,7 @@ namespace Web_Browser
             this.bookmarksMenu.Size = new System.Drawing.Size(224, 26);
             this.bookmarksMenu.Text = "Bookmarks";
             this.bookmarksMenu.ToolTipText = "Options and list of bookmarks";
+            this.bookmarksMenu.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.bookmarkMenu_DropDownItemClicked);
             this.bookmarksMenu.Click += new System.EventHandler(this.bookmarks_Click);
             // 
             // addBookmarkButton
@@ -290,11 +292,39 @@ namespace Web_Browser
             // 
             this.historyMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.historyToolStripMenuItem1,
-            this.clearHistoryToolStripMenuItem});
+            this.clearHistoryToolStripMenuItem,
+            this.recentHistoryToolStripMenuItem});
             this.historyMenu.Name = "historyMenu";
             this.historyMenu.Size = new System.Drawing.Size(224, 26);
             this.historyMenu.Text = "History";
+            this.historyMenu.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.historyMenu_DropDownItemClicked);
             this.historyMenu.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
+            // 
+            // historyToolStripMenuItem1
+            // 
+            this.historyToolStripMenuItem1.Name = "historyToolStripMenuItem1";
+            this.historyToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.historyToolStripMenuItem1.Text = "History...";
+            this.historyToolStripMenuItem1.ToolTipText = "Open history tabview";
+            this.historyToolStripMenuItem1.Click += new System.EventHandler(this.historyToolStripMenuItem1_Click);
+            // 
+            // clearHistoryToolStripMenuItem
+            // 
+            this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
+            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearHistoryToolStripMenuItem.Text = "Clear history...";
+            this.clearHistoryToolStripMenuItem.ToolTipText = "Clear history";
+            this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
+            // 
+            // recentHistoryToolStripMenuItem
+            // 
+            this.recentHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.recentHistoryToolStripMenuItem.Enabled = false;
+            this.recentHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recentHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.recentHistoryToolStripMenuItem.Name = "recentHistoryToolStripMenuItem";
+            this.recentHistoryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.recentHistoryToolStripMenuItem.Text = "Recent history:";
             // 
             // searchEngineToolStripMenuItem
             // 
@@ -384,22 +414,6 @@ namespace Web_Browser
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
-            // clearHistoryToolStripMenuItem
-            // 
-            this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
-            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.clearHistoryToolStripMenuItem.Text = "Clear history...";
-            this.clearHistoryToolStripMenuItem.ToolTipText = "Clear history";
-            this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
-            // 
-            // historyToolStripMenuItem1
-            // 
-            this.historyToolStripMenuItem1.Name = "historyToolStripMenuItem1";
-            this.historyToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.historyToolStripMenuItem1.Text = "History...";
-            this.historyToolStripMenuItem1.ToolTipText = "Show history";
-            this.historyToolStripMenuItem1.Click += new System.EventHandler(this.historyToolStripMenuItem1_Click);
-            // 
             // Bee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -420,6 +434,7 @@ namespace Web_Browser
             this.PerformLayout();
 
         }
+
 
 
         #endregion
@@ -455,6 +470,7 @@ namespace Web_Browser
         private ToolStripMenuItem closeTabToolStripMenuItem;
         private ToolStripMenuItem clearHistoryToolStripMenuItem;
         private ToolStripMenuItem historyToolStripMenuItem1;
+        private ToolStripMenuItem recentHistoryToolStripMenuItem;
     }
 }
 
