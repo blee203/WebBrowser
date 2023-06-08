@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using System.Drawing;
 namespace Web_Browser
 {
     public partial class Bee : Form
@@ -20,6 +20,8 @@ namespace Web_Browser
         public Bee()
         {
             InitializeComponent();
+            this.MouseWheel += webview21_MouseWheel;
+            this.tabControl1.Click += tabControl1_Click;
         }
 
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bee));
@@ -28,7 +30,10 @@ namespace Web_Browser
         int defItemOfSE = 4, defItemOfBM = 3, defItemOfH = 3;
         string myIP = Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where<IPAddress>(x => x.AddressFamily == AddressFamily.InterNetwork).FirstOrDefault().ToString();
         System.Windows.Forms.ListView lv;
-
+        private System.Windows.Forms.Button Zoomin;
+        private System.Windows.Forms.Button Zoomout;
+        private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.TextBox sizeText;
         private async void Form1_Load(object sender, EventArgs e)
         {
             if (!File.Exists("SE_Name.txt"))//check file SE
@@ -67,9 +72,101 @@ namespace Web_Browser
             webB = new WebView2() { Parent = tabControl1.SelectedTab, Dock = DockStyle.Fill };
             await webB.EnsureCoreWebView2Async();
             webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
+            webB.ZoomFactorChanged += webBrowser21_ZoomFactorChanged;
+            adjustSize();
+
         }
         #endregion
+        private void adjustSize()
+        {
+            // Creating and setting the properties of adjust size
+            Zoomin = new System.Windows.Forms.Button();
+            Zoomin.Location = new Point(1135, 55);
+            Zoomin.Text = "+";
+            Zoomin.TextAlign = ContentAlignment.MiddleCenter;
+            Zoomin.Size = new Size(40, 45);
+            Zoomin.BackColor = Color.LightBlue;
+            Zoomin.Visible = false;
+            Zoomin.Font = new Font("Source Sans Pro", 20);
+            Zoomin.Click += Zoomin_Click;
 
+            Zoomout = new System.Windows.Forms.Button();
+            Zoomout.Location = new Point(1175, 55);
+            Zoomout.Text = "-";
+            Zoomin.TextAlign = ContentAlignment.MiddleCenter;
+            Zoomout.Size = new Size(40, 45);
+            Zoomout.BackColor = Color.LightPink;
+            Zoomout.Visible = false;
+            Zoomout.Font = new Font("Source Sans Pro", 20);
+            Zoomout.Click += Zoomout_Click;
+
+            Reset = new System.Windows.Forms.Button();
+            Reset.Location = new Point(1140, 105);
+            Reset.Text = "Reset";
+            Reset.Size = new Size(70, 25);
+            Reset.Visible = false;
+            Reset.Font = new Font("Source Sans Pro", 10);
+            Reset.Click += Reset_Click;
+
+            sizeText = new System.Windows.Forms.TextBox();
+            sizeText.Location = new Point(1038, 70);
+            sizeText.Size = new Size(80, 18);
+            sizeText.Visible = false;
+            sizeText.Font = new Font("Source Sans Pro", 10);
+            sizeText.TextAlign = HorizontalAlignment.Center;
+            sizeText.ReadOnly = true;
+            sizeText.Text = (webB.ZoomFactor*100)+"%";
+
+            // Adding this button to form
+            this.Controls.Add(Zoomin);
+            this.Controls.Add(Zoomout);
+            this.Controls.Add(Reset);
+            this.Controls.Add(sizeText);
+
+            Zoomin.BringToFront();
+            Zoomout.BringToFront();
+            Reset.BringToFront();
+            sizeText.BringToFront();
+        }
+        private void webview21_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                Zoomin.Visible = true;
+                Zoomout.Visible = true;
+                Reset.Visible = true;
+                sizeText.Visible = true;
+            }
+        }
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            Zoomin.Visible = false;
+            Zoomout.Visible = false;
+            Reset.Visible = false;
+            sizeText.Visible = false;
+        }
+
+        private void Zoomin_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor += 0.25;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
+        private void Zoomout_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor -= 0.25;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor = 1;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
+        private void webBrowser21_ZoomFactorChanged(object sender, EventArgs e)
+        {
+            double s = webB.ZoomFactor;
+            s *= 100;
+            sizeText.Text = s.ToString() + "%";
+        }
         #region button lv1
 
         private void toolStripButton1_Click(object sender, EventArgs e)//nút quay lại trang trước
