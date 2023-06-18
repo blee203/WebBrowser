@@ -71,7 +71,7 @@ namespace Web_Browser
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Maroon;
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goBackButton,
@@ -88,19 +88,20 @@ namespace Web_Browser
             this.alreadyBookmarkButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1350, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1200, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // goBackButton
             // 
             this.goBackButton.AutoToolTip = false;
-            this.goBackButton.BackColor = System.Drawing.Color.Maroon;
+            this.goBackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.goBackButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.goBackButton.Image = ((System.Drawing.Image)(resources.GetObject("goBackButton.Image")));
             this.goBackButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.goBackButton.Margin = new System.Windows.Forms.Padding(1);
             this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(34, 33);
+            this.goBackButton.Size = new System.Drawing.Size(29, 29);
             this.goBackButton.Text = "toolStripButton1";
             this.goBackButton.ToolTipText = "Click to go back";
             this.goBackButton.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -108,12 +109,13 @@ namespace Web_Browser
             // goForwadButton
             // 
             this.goForwadButton.AutoToolTip = false;
-            this.goForwadButton.BackColor = System.Drawing.Color.Maroon;
+            this.goForwadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.goForwadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.goForwadButton.Image = ((System.Drawing.Image)(resources.GetObject("goForwadButton.Image")));
             this.goForwadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.goForwadButton.Margin = new System.Windows.Forms.Padding(1);
             this.goForwadButton.Name = "goForwadButton";
-            this.goForwadButton.Size = new System.Drawing.Size(34, 33);
+            this.goForwadButton.Size = new System.Drawing.Size(29, 29);
             this.goForwadButton.Text = "toolStripButton2";
             this.goForwadButton.ToolTipText = "Click to go forward";
             this.goForwadButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -121,12 +123,13 @@ namespace Web_Browser
             // reloadButton
             // 
             this.reloadButton.AutoToolTip = false;
-            this.reloadButton.BackColor = System.Drawing.Color.Maroon;
+            this.reloadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.reloadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.reloadButton.Image = ((System.Drawing.Image)(resources.GetObject("reloadButton.Image")));
             this.reloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.reloadButton.Margin = new System.Windows.Forms.Padding(1);
             this.reloadButton.Name = "reloadButton";
-            this.reloadButton.Size = new System.Drawing.Size(34, 33);
+            this.reloadButton.Size = new System.Drawing.Size(29, 29);
             this.reloadButton.Text = "toolStripButton3";
             this.reloadButton.ToolTipText = "Reload this page";
             this.reloadButton.Click += new System.EventHandler(this.toolStripButton3_Click);
@@ -134,44 +137,49 @@ namespace Web_Browser
             // stopLoadButton
             // 
             this.stopLoadButton.AutoToolTip = false;
-            this.stopLoadButton.BackColor = System.Drawing.Color.Maroon;
+            this.stopLoadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.stopLoadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.stopLoadButton.Image = ((System.Drawing.Image)(resources.GetObject("stopLoadButton.Image")));
             this.stopLoadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stopLoadButton.Margin = new System.Windows.Forms.Padding(1);
             this.stopLoadButton.Name = "stopLoadButton";
-            this.stopLoadButton.Size = new System.Drawing.Size(34, 33);
+            this.stopLoadButton.Size = new System.Drawing.Size(29, 29);
             this.stopLoadButton.Text = "toolStripButton4";
             this.stopLoadButton.ToolTipText = "Stop loading this page";
             this.stopLoadButton.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // SEName
             // 
-            this.SEName.BackColor = System.Drawing.Color.Maroon;
+            this.SEName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.SEName.BackgroundImage = global::Web_Browser.Properties.Resources.white;
             this.SEName.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SEName.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SEName.Margin = new System.Windows.Forms.Padding(1);
             this.SEName.Name = "SEName";
-            this.SEName.Size = new System.Drawing.Size(71, 33);
+            this.SEName.Size = new System.Drawing.Size(60, 29);
             this.SEName.Text = "Google";
             // 
             // searchBox
             // 
-            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.searchBox.BackColor = System.Drawing.Color.White;
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(1);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(562, 38);
+            this.searchBox.Size = new System.Drawing.Size(500, 29);
             this.searchBox.ToolTipText = "Enter a keyword/url here";
             this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBox_KeyPress);
             // 
             // searchButton
             // 
             this.searchButton.AutoToolTip = false;
-            this.searchButton.BackColor = System.Drawing.Color.Maroon;
+            this.searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.searchButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
             this.searchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.searchButton.Margin = new System.Windows.Forms.Padding(1);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(34, 33);
+            this.searchButton.Size = new System.Drawing.Size(29, 29);
             this.searchButton.Text = "toolStripButton5";
             this.searchButton.ToolTipText = "Search keyword or Navigate URL";
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -179,12 +187,13 @@ namespace Web_Browser
             // bookmarkButton
             // 
             this.bookmarkButton.AutoToolTip = false;
-            this.bookmarkButton.BackColor = System.Drawing.Color.Maroon;
+            this.bookmarkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.bookmarkButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
             this.bookmarkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bookmarkButton.Margin = new System.Windows.Forms.Padding(1);
             this.bookmarkButton.Name = "bookmarkButton";
-            this.bookmarkButton.Size = new System.Drawing.Size(34, 33);
+            this.bookmarkButton.Size = new System.Drawing.Size(29, 29);
             this.bookmarkButton.Text = "toolStripButton6";
             this.bookmarkButton.ToolTipText = "Bookmark this tab";
             this.bookmarkButton.Click += new System.EventHandler(this.bookmarkButton_Click);
@@ -192,13 +201,14 @@ namespace Web_Browser
             // newTabButton
             // 
             this.newTabButton.AutoToolTip = false;
-            this.newTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.newTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.newTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.newTabButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newTabButton.Image = ((System.Drawing.Image)(resources.GetObject("newTabButton.Image")));
             this.newTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newTabButton.Margin = new System.Windows.Forms.Padding(1);
             this.newTabButton.Name = "newTabButton";
-            this.newTabButton.Size = new System.Drawing.Size(87, 33);
+            this.newTabButton.Size = new System.Drawing.Size(72, 29);
             this.newTabButton.Text = "New tab";
             this.newTabButton.ToolTipText = "New tab";
             this.newTabButton.Click += new System.EventHandler(this.toolStripButton7_Click);
@@ -206,13 +216,14 @@ namespace Web_Browser
             // closeTabButton
             // 
             this.closeTabButton.AutoToolTip = false;
-            this.closeTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.closeTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.closeTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.closeTabButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeTabButton.Image = ((System.Drawing.Image)(resources.GetObject("closeTabButton.Image")));
             this.closeTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.closeTabButton.Margin = new System.Windows.Forms.Padding(1);
             this.closeTabButton.Name = "closeTabButton";
-            this.closeTabButton.Size = new System.Drawing.Size(94, 33);
+            this.closeTabButton.Size = new System.Drawing.Size(77, 29);
             this.closeTabButton.Text = "Close tab";
             this.closeTabButton.ToolTipText = "Close selected tab";
             this.closeTabButton.Click += new System.EventHandler(this.toolStripButton8_Click);
@@ -220,6 +231,7 @@ namespace Web_Browser
             // moreButton
             // 
             this.moreButton.AutoToolTip = false;
+            this.moreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.moreButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.moreButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newTabToolStripMenuItem,
@@ -231,8 +243,9 @@ namespace Web_Browser
             this.aboutToolStripMenuItem});
             this.moreButton.Image = ((System.Drawing.Image)(resources.GetObject("moreButton.Image")));
             this.moreButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moreButton.Margin = new System.Windows.Forms.Padding(1);
             this.moreButton.Name = "moreButton";
-            this.moreButton.Size = new System.Drawing.Size(41, 33);
+            this.moreButton.Size = new System.Drawing.Size(39, 29);
             this.moreButton.Text = "toolStripSplitButton1";
             this.moreButton.ToolTipText = "More control of Bee";
             this.moreButton.ButtonClick += new System.EventHandler(this.moreButton_ButtonClick);
@@ -240,21 +253,21 @@ namespace Web_Browser
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newTabToolStripMenuItem.Text = "New Tab";
             this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripMenuItem_Click);
             // 
             // closeTabToolStripMenuItem
             // 
             this.closeTabToolStripMenuItem.Name = "closeTabToolStripMenuItem";
-            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.closeTabToolStripMenuItem.Text = "Close Tab";
             this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
             // 
             // closeAllTabs
             // 
             this.closeAllTabs.Name = "closeAllTabs";
-            this.closeAllTabs.Size = new System.Drawing.Size(270, 34);
+            this.closeAllTabs.Size = new System.Drawing.Size(224, 26);
             this.closeAllTabs.Text = "Close all tabs";
             this.closeAllTabs.ToolTipText = "Close all tabs";
             this.closeAllTabs.Click += new System.EventHandler(this.closeAllTabs_Click);
@@ -266,7 +279,7 @@ namespace Web_Browser
             this.deleteBookmarkButton,
             this.editBookmarkButton});
             this.bookmarksMenu.Name = "bookmarksMenu";
-            this.bookmarksMenu.Size = new System.Drawing.Size(270, 34);
+            this.bookmarksMenu.Size = new System.Drawing.Size(224, 26);
             this.bookmarksMenu.Text = "Bookmarks";
             this.bookmarksMenu.ToolTipText = "Options and list of bookmarks";
             this.bookmarksMenu.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.bookmarkMenu_DropDownItemClicked);
@@ -275,7 +288,7 @@ namespace Web_Browser
             // addBookmarkButton
             // 
             this.addBookmarkButton.Name = "addBookmarkButton";
-            this.addBookmarkButton.Size = new System.Drawing.Size(284, 34);
+            this.addBookmarkButton.Size = new System.Drawing.Size(231, 26);
             this.addBookmarkButton.Text = "Add new bookmark...";
             this.addBookmarkButton.ToolTipText = "Add a new bookmark";
             this.addBookmarkButton.Click += new System.EventHandler(this.addBookmarkButton_Click);
@@ -283,7 +296,7 @@ namespace Web_Browser
             // deleteBookmarkButton
             // 
             this.deleteBookmarkButton.Name = "deleteBookmarkButton";
-            this.deleteBookmarkButton.Size = new System.Drawing.Size(284, 34);
+            this.deleteBookmarkButton.Size = new System.Drawing.Size(231, 26);
             this.deleteBookmarkButton.Text = "Delete bookmark...";
             this.deleteBookmarkButton.ToolTipText = "Delete a bookmark or all bookmarks";
             this.deleteBookmarkButton.Click += new System.EventHandler(this.deleteBookmarkButton_Click);
@@ -291,7 +304,7 @@ namespace Web_Browser
             // editBookmarkButton
             // 
             this.editBookmarkButton.Name = "editBookmarkButton";
-            this.editBookmarkButton.Size = new System.Drawing.Size(284, 34);
+            this.editBookmarkButton.Size = new System.Drawing.Size(231, 26);
             this.editBookmarkButton.Text = "Edit bookmark...";
             this.editBookmarkButton.ToolTipText = "Edit a bookmark";
             this.editBookmarkButton.Click += new System.EventHandler(this.editBookmarkButton_Click);
@@ -303,7 +316,7 @@ namespace Web_Browser
             this.clearHistoryToolStripMenuItem,
             this.recentHistoryToolStripMenuItem});
             this.historyMenu.Name = "historyMenu";
-            this.historyMenu.Size = new System.Drawing.Size(270, 34);
+            this.historyMenu.Size = new System.Drawing.Size(224, 26);
             this.historyMenu.Text = "History";
             this.historyMenu.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.historyMenu_DropDownItemClicked);
             this.historyMenu.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
@@ -311,7 +324,7 @@ namespace Web_Browser
             // historyToolStripMenuItem1
             // 
             this.historyToolStripMenuItem1.Name = "historyToolStripMenuItem1";
-            this.historyToolStripMenuItem1.Size = new System.Drawing.Size(248, 34);
+            this.historyToolStripMenuItem1.Size = new System.Drawing.Size(202, 26);
             this.historyToolStripMenuItem1.Text = "History...";
             this.historyToolStripMenuItem1.ToolTipText = "Open history tabview";
             this.historyToolStripMenuItem1.Click += new System.EventHandler(this.historyToolStripMenuItem1_Click);
@@ -319,7 +332,7 @@ namespace Web_Browser
             // clearHistoryToolStripMenuItem
             // 
             this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
-            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
             this.clearHistoryToolStripMenuItem.Text = "Clear history...";
             this.clearHistoryToolStripMenuItem.ToolTipText = "Clear history";
             this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
@@ -331,7 +344,7 @@ namespace Web_Browser
             this.recentHistoryToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recentHistoryToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.recentHistoryToolStripMenuItem.Name = "recentHistoryToolStripMenuItem";
-            this.recentHistoryToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+            this.recentHistoryToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
             this.recentHistoryToolStripMenuItem.Text = "Recent history:";
             // 
             // searchEngineToolStripMenuItem
@@ -342,7 +355,7 @@ namespace Web_Browser
             this.editSEButton,
             this.googleToolStripMenuItem});
             this.searchEngineToolStripMenuItem.Name = "searchEngineToolStripMenuItem";
-            this.searchEngineToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.searchEngineToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.searchEngineToolStripMenuItem.Text = "Search Engine";
             this.searchEngineToolStripMenuItem.ToolTipText = "Options and list of search engines";
             this.searchEngineToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.SearchEngineToolStripMenuItem_DropDownItemClicked);
@@ -351,7 +364,7 @@ namespace Web_Browser
             // addSearchEngine
             // 
             this.addSearchEngine.Name = "addSearchEngine";
-            this.addSearchEngine.Size = new System.Drawing.Size(289, 34);
+            this.addSearchEngine.Size = new System.Drawing.Size(240, 26);
             this.addSearchEngine.Text = "Add search engine...";
             this.addSearchEngine.ToolTipText = "Add a new search engine";
             this.addSearchEngine.Click += new System.EventHandler(this.addSearchEngine_Click);
@@ -359,7 +372,7 @@ namespace Web_Browser
             // deleteSEButton
             // 
             this.deleteSEButton.Name = "deleteSEButton";
-            this.deleteSEButton.Size = new System.Drawing.Size(289, 34);
+            this.deleteSEButton.Size = new System.Drawing.Size(240, 26);
             this.deleteSEButton.Text = "Delete search engine...";
             this.deleteSEButton.ToolTipText = "Delete a search engine or all search engines";
             this.deleteSEButton.Click += new System.EventHandler(this.deleteSEButton_Click);
@@ -367,7 +380,7 @@ namespace Web_Browser
             // editSEButton
             // 
             this.editSEButton.Name = "editSEButton";
-            this.editSEButton.Size = new System.Drawing.Size(289, 34);
+            this.editSEButton.Size = new System.Drawing.Size(240, 26);
             this.editSEButton.Text = "Edit search engine...";
             this.editSEButton.ToolTipText = "Edit a search engine";
             this.editSEButton.Click += new System.EventHandler(this.editSEButton_Click);
@@ -375,7 +388,7 @@ namespace Web_Browser
             // googleToolStripMenuItem
             // 
             this.googleToolStripMenuItem.Name = "googleToolStripMenuItem";
-            this.googleToolStripMenuItem.Size = new System.Drawing.Size(289, 34);
+            this.googleToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.googleToolStripMenuItem.Text = "Google";
             this.googleToolStripMenuItem.ToolTipText = "https://www.google.com/search?q=";
             this.googleToolStripMenuItem.Click += new System.EventHandler(this.googleToolStripMenuItem_Click);
@@ -383,30 +396,30 @@ namespace Web_Browser
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.ToolTipText = "Some info about this web browser";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.addAbout_Click);
             // 
             // alreadyBookmarkButton
             // 
-            this.alreadyBookmarkButton.BackColor = System.Drawing.Color.Maroon;
+            this.alreadyBookmarkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.alreadyBookmarkButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.alreadyBookmarkButton.Enabled = false;
             this.alreadyBookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("alreadyBookmarkButton.Image")));
             this.alreadyBookmarkButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.alreadyBookmarkButton.Name = "alreadyBookmarkButton";
-            this.alreadyBookmarkButton.Size = new System.Drawing.Size(34, 33);
+            this.alreadyBookmarkButton.Size = new System.Drawing.Size(29, 28);
             this.alreadyBookmarkButton.Text = "toolStripButton1";
             this.alreadyBookmarkButton.Visible = false;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage1.Size = new System.Drawing.Size(1342, 774);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1192, 616);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Tab";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -415,24 +428,24 @@ namespace Web_Browser
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 38);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabControl1.Location = new System.Drawing.Point(0, 31);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1350, 807);
+            this.tabControl1.Size = new System.Drawing.Size(1200, 645);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // Bee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1350, 845);
+            this.ClientSize = new System.Drawing.Size(1200, 676);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Bee";
             this.Text = "Bee";
             this.Load += new System.EventHandler(this.Form1_Load);

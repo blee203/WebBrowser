@@ -74,9 +74,7 @@ namespace Web_Browser
             webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
             webB.ZoomFactorChanged += webBrowser21_ZoomFactorChanged;
             adjustSize();
-
         }
-        #endregion
         private void adjustSize()
         {
             // Creating and setting the properties of adjust size
@@ -115,7 +113,7 @@ namespace Web_Browser
             sizeText.Font = new Font("Source Sans Pro", 10);
             sizeText.TextAlign = HorizontalAlignment.Center;
             sizeText.ReadOnly = true;
-            sizeText.Text = (webB.ZoomFactor*100)+"%";
+            sizeText.Text = (webB.ZoomFactor * 100) + "%";
 
             // Adding this button to form
             this.Controls.Add(Zoomin);
@@ -128,45 +126,8 @@ namespace Web_Browser
             Reset.BringToFront();
             sizeText.BringToFront();
         }
-        private void webview21_MouseWheel(object sender, MouseEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                Zoomin.Visible = true;
-                Zoomout.Visible = true;
-                Reset.Visible = true;
-                sizeText.Visible = true;
-            }
-        }
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-            Zoomin.Visible = false;
-            Zoomout.Visible = false;
-            Reset.Visible = false;
-            sizeText.Visible = false;
-        }
+        #endregion
 
-        private void Zoomin_Click(object sender, EventArgs e)
-        {
-            webB.ZoomFactor += 0.25;
-            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
-        }
-        private void Zoomout_Click(object sender, EventArgs e)
-        {
-            webB.ZoomFactor -= 0.25;
-            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
-        }
-        private void Reset_Click(object sender, EventArgs e)
-        {
-            webB.ZoomFactor = 1;
-            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
-        }
-        private void webBrowser21_ZoomFactorChanged(object sender, EventArgs e)
-        {
-            double s = webB.ZoomFactor;
-            s *= 100;
-            sizeText.Text = s.ToString() + "%";
-        }
         #region button lv1
 
         private void toolStripButton1_Click(object sender, EventArgs e)//nút quay lại trang trước
@@ -179,11 +140,11 @@ namespace Web_Browser
         }
         private void toolStripButton3_Click(object sender, EventArgs e)//nút tải lại
         {
-            webB.Refresh();
+            webB.CoreWebView2.Reload();
         }
         private void toolStripButton4_Click(object sender, EventArgs e)//nút dừng tải
         {
-            webB.Stop();
+            webB.CoreWebView2.Stop();
         }
         private void searchButton_Click(object sender, EventArgs e)//nút tìm kiếm
         {
@@ -222,11 +183,33 @@ namespace Web_Browser
         {
 
         }
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            Zoomin.Visible = false;
+            Zoomout.Visible = false;
+            Reset.Visible = false;
+            sizeText.Visible = false;
+        }
+        private void Zoomin_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor += 0.25;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
+        private void Zoomout_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor -= 0.25;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            webB.ZoomFactor = 1;
+            sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+        }
 
         #endregion
 
         #region button lv2
-            #region moreButton's buttons
+        #region moreButton's buttons
         private void newTabToolStripMenuItem_Click(object sender, EventArgs e)//new tab button
         {
             addNewTab();
@@ -534,6 +517,22 @@ namespace Web_Browser
             File.Delete("H_DateTime.txt");
             File.Move(tempF, "H_DateTime.txt");
         }
+        private void webview21_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                Zoomin.Visible = true;
+                Zoomout.Visible = true;
+                Reset.Visible = true;
+                sizeText.Visible = true;
+            }
+        }
+        private void webBrowser21_ZoomFactorChanged(object sender, EventArgs e)
+        {
+            double s = webB.ZoomFactor;
+            s *= 100;
+            sizeText.Text = s.ToString() + "%";
+        }
 
         #endregion
 
@@ -572,6 +571,12 @@ namespace Web_Browser
                         bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
                     }
                 }
+                else
+                {
+                    searchBox.Text = "";
+                    bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
+                }
+                webB = current.Controls[0] as WebView2;
             }
         }
         void updateSE()//update SE after user interact with SE
