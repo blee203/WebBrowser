@@ -82,11 +82,11 @@ namespace Web_Browser
         }
         private void toolStripButton3_Click(object sender, EventArgs e)//nút tải lại
         {
-            webB.Refresh();
+            webB.CoreWebView2.Reload();
         }
         private void toolStripButton4_Click(object sender, EventArgs e)//nút dừng tải
         {
-            webB.Stop();
+            webB.CoreWebView2.Stop();
         }
         private void searchButton_Click(object sender, EventArgs e)//nút tìm kiếm
         {
@@ -474,7 +474,8 @@ namespace Web_Browser
                     {
                         bookmarkButton.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkButton.Image")));
                     }
-                }
+                }else searchBox.Text = "";
+                webB = current.Controls[0] as WebView2;
             }
         }
         void updateSE()//update SE after user interact with SE

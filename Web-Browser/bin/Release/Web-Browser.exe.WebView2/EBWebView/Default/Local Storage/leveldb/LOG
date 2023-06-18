@@ -1,2 +1,5 @@
-2023/06/04-15:59:59.013 11b8 Creating DB D:\WebBrowser\Web-Browser\bin\Release\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb since it was missing.
-2023/06/04-15:59:59.229 11b8 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Release\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2023/06/18-22:30:49.930 1758 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Release\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2023/06/18-22:30:49.931 1758 Recovering log #12
+2023/06/18-22:30:49.939 1758 Level-0 table #15: started
+2023/06/18-22:30:49.951 1758 Level-0 table #15: 361257 bytes OK
+2023/06/18-22:30:49.957 1758 Delete type=0 #12

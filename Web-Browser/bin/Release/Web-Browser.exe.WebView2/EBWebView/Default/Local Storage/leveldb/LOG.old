@@ -1,0 +1,9 @@
+2023/06/18-22:27:04.881 35dc Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Release\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2023/06/18-22:27:04.882 35dc Recovering log #7
+2023/06/18-22:27:04.884 35dc Reusing old log D:\WebBrowser\Web-Browser\bin\Release\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000007.log 
+2023/06/18-22:27:53.216 3204 Level-0 table #11: started
+2023/06/18-22:27:53.224 3204 Level-0 table #11: 366824 bytes OK
+2023/06/18-22:27:53.226 3204 Delete type=0 #7
+2023/06/18-22:27:54.818 35dc Level-0 table #13: started
+2023/06/18-22:27:54.827 35dc Level-0 table #13: 360503 bytes OK
+2023/06/18-22:27:54.829 35dc Delete type=0 #10
