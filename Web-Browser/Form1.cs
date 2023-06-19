@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing;
+using System.Threading;
+
 namespace Web_Browser
 {
     public partial class Bee : Form
@@ -20,8 +22,7 @@ namespace Web_Browser
         public Bee()
         {
             InitializeComponent();
-            this.MouseWheel += webview21_MouseWheel;
-            this.tabControl1.Click += tabControl1_Click;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bee));
@@ -64,7 +65,7 @@ namespace Web_Browser
             }
             lines = File.ReadAllLines("H_Name.txt");//update H from file
             linesURL = File.ReadAllLines("H_URL.txt");
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < 10; i++)
             {
                 addH(i, lines[i], linesURL[i]);
             }
@@ -183,27 +184,23 @@ namespace Web_Browser
         {
 
         }
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-            Zoomin.Visible = false;
-            Zoomout.Visible = false;
-            Reset.Visible = false;
-            sizeText.Visible = false;
-        }
         private void Zoomin_Click(object sender, EventArgs e)
         {
             webB.ZoomFactor += 0.25;
             sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+            timeZoomDisappear = 15;
         }
         private void Zoomout_Click(object sender, EventArgs e)
         {
             webB.ZoomFactor -= 0.25;
             sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+            timeZoomDisappear = 15;
         }
         private void Reset_Click(object sender, EventArgs e)
         {
             webB.ZoomFactor = 1;
             sizeText.Text = (webB.ZoomFactor * 100).ToString() + "%";
+            timeZoomDisappear = 15;
         }
 
         #endregion
@@ -288,7 +285,6 @@ namespace Web_Browser
             f.ShowDialog();
             updateSE();
         }
-
         private void editSEButton_Click(object sender, EventArgs e)//edit SE button
         {
             Form form = new editSE_F();
@@ -365,20 +361,16 @@ namespace Web_Browser
 
             if (item != null)
             {
-                TabPage newTab = new TabPage();
-                newTab.Size = new System.Drawing.Size(1192, 620);
-                newTab.Text = "New Tab";
-                newTab.UseVisualStyleBackColor = true;
+                searchBox.Text = item.SubItems[2].Text;
 
+                TabPage tab = (sender as System.Windows.Forms.ListView).Parent as TabPage;
+
+                tab.Controls.Remove(sender as System.Windows.Forms.ListView);
                 webB = new WebView2() { Dock = DockStyle.Fill };
-                newTab.Controls.Add(webB);
-
-                tabControl1.Controls.Add(newTab);
-                tabControl1.SelectTab(tabControl1.TabCount - 1);
-
+                tab.Controls.Add(webB);
                 await webB.EnsureCoreWebView2Async();
                 webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
-                searchBox.Text = item.SubItems[2].Text;
+                webB.ZoomFactorChanged += webBrowser21_ZoomFactorChanged;
                 searchButton.PerformClick();
             }
         }
@@ -412,6 +404,7 @@ namespace Web_Browser
 
             await webB.EnsureCoreWebView2Async();
             webB.CoreWebView2.DOMContentLoaded += WebView_ContentLoaded;
+            webB.ZoomFactorChanged += webBrowser21_ZoomFactorChanged;
             searchBox.Text = "";
         }
         private void closeTab()//close tab
@@ -517,23 +510,32 @@ namespace Web_Browser
             File.Delete("H_DateTime.txt");
             File.Move(tempF, "H_DateTime.txt");
         }
-        private void webview21_MouseWheel(object sender, MouseEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                Zoomin.Visible = true;
-                Zoomout.Visible = true;
-                Reset.Visible = true;
-                sizeText.Visible = true;
-            }
-        }
+        static int timeZoomDisappear;
         private void webBrowser21_ZoomFactorChanged(object sender, EventArgs e)
         {
             double s = webB.ZoomFactor;
             s *= 100;
             sizeText.Text = s.ToString() + "%";
+            timeZoomDisappear = 15;
+            if (!Zoomin.Visible)
+                new Thread(new ThreadStart(zoomDisappear)).Start();
+            Zoomin.Visible = true;
+            Zoomout.Visible = true;
+            Reset.Visible = true;
+            sizeText.Visible = true;
         }
-
+        private void zoomDisappear()
+        {
+            while (timeZoomDisappear != 0)
+            {
+                Thread.Sleep(100);
+                timeZoomDisappear -= 1;
+            }
+            Zoomin.Visible = false;
+            Zoomout.Visible = false;
+            Reset.Visible = false;
+            sizeText.Visible = false;
+        }
         #endregion
 
         #region support user experience
@@ -590,6 +592,7 @@ namespace Web_Browser
             {
                 addSE(searchEngineToolStripMenuItem.DropDownItems.Count - defItemOfSE, lines[i], linesURL[i]);
             }
+            googleToolStripMenuItem.PerformClick();
         }
         void updateBM()//update BM after user interact with BM
         {
@@ -602,6 +605,7 @@ namespace Web_Browser
             {
                 addBM(bookmarksMenu.DropDownItems.Count - defItemOfBM, lines[i], linesURL[i]);
             }
+            reloadButton.PerformClick();
         }
         void updateH()//update H after user interact with H
         {
