@@ -65,7 +65,7 @@ namespace Web_Browser
             }
             lines = File.ReadAllLines("H_Name.txt");//update H from file
             linesURL = File.ReadAllLines("H_URL.txt");
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < (lines.Count()>10?10 : lines.Count()); i++)
             {
                 addH(i, lines[i], linesURL[i]);
             }

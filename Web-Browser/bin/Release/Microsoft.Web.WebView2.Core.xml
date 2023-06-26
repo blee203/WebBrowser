@@ -59,6 +59,12 @@
             <summary>
             WebView2 enables you to host web content using the latest Microsoft Edge browser and web technology.
             </summary>
+            <summary>
+            WebView2 enables you to host web content using the latest Microsoft Edge browser and web technology.
+            </summary>
+            <summary>
+            WebView2 enables you to host web content using the latest Microsoft Edge browser and web technology.
+            </summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.PrintToPdfAsync(System.String,Microsoft.Web.WebView2.Core.CoreWebView2PrintSettings)">
              <summary>
@@ -1057,7 +1063,7 @@
             The default download dialog corner alignment.
             </summary>
             <remarks>
-            The dialog can be aligned to any of the WebView corners (see <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2DefaultDownloadDialogCornerAlignment"/>). When the WebView or dialog changes size, the dialog keeps it position relative to the corner. The dialog may become partially or completely outside of the WebView bounds if the WebView is small enough. Set the margin from the corner with the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DefaultDownloadDialogMargin"/> property.
+            The dialog can be aligned to any of the WebView corners (see <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2DefaultDownloadDialogCornerAlignment"/>). When the WebView or dialog changes size, the dialog keeps it position relative to the corner. The dialog may become partially or completely outside of the WebView bounds if the WebView is small enough. Set the margin from the corner with the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DefaultDownloadDialogMargin"/> property. The corner alignment and margin should be set during initialization to ensure that they are correcly applied when the layout is first computed, otherwise they will not take effect until the next time the WebView position or size is updated.
             </remarks>
             <example>
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="SetDefaultDownloadDialogPosition":::
@@ -1068,7 +1074,7 @@
             The default download dialog margin relative to the WebView corner specified by <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.DefaultDownloadDialogCornerAlignment"/>.
             </summary>
             <remarks>
-            The margin is a point that describes the vertical and horizontal distances between the chosen WebView corner and the default download dialog corner nearest to it. Positive values move the dialog towards the center of the WebView from the chosen WebView corner, and negative values move the dialog away from it. Use (0, 0) to align the dialog to the WebView corner with no margin.
+            The margin is a point that describes the vertical and horizontal distances between the chosen WebView corner and the default download dialog corner nearest to it. Positive values move the dialog towards the center of the WebView from the chosen WebView corner, and negative values move the dialog away from it. Use (0, 0) to align the dialog to the WebView corner with no margin. The corner alignment and margin should be set during initialization to ensure that they are correcly applied when the layout is first computed, otherwise they will not take effect until the next time the WebView position or size is updated.
             </remarks>
         </member>
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.IsDefaultDownloadDialogOpenChanged">
@@ -1160,23 +1166,7 @@
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="Profile":::
             </example>
         </member>
-        <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected">
-            <summary>
-            The ServerCertificateErrorDetected event is raised when the WebView2 cannot verify server's digital certificate while loading a web page.
-            </summary>
-            <remarks>
-            This event will raise for all web resources and follows the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.WebResourceRequested"/> event.
-            
-            If you don't handle the event, WebView2 will show the default TLS interstitial error page to the user for navigations, and for non-navigations the web request is cancelled.
-            
-            WebView2 caches the response when action is <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2ServerCertificateErrorAction.AlwaysAllow"/> for the RequestUri's host and the server certificate in the session and the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected"/> event won't be raised again.
-            
-            To raise the event again you must clear the cache using <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.ClearServerCertificateErrorActionsAsync"/>.
-            </remarks>
-            <example>
-            :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="ServerCertificateErrorDetected":::
-            </example>
-        </member>
+        <!-- Badly formed XML comment ignored for member "E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected" -->
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2.ClearServerCertificateErrorActionsAsync">
             <summary>
             Clears all cached decisions to proceed with TLS certificate errors from the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.ServerCertificateErrorDetected"/> event for all WebView2's sharing the same session.
@@ -1332,6 +1322,32 @@
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/assets/sharedBuffer.html" id="ShareBufferScriptCode_1":::
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/assets/sharedBuffer.html" id="ShareBufferScriptCode_2":::
             </example>
+        </member>
+        <!-- Badly formed XML comment ignored for member "E:Microsoft.Web.WebView2.Core.CoreWebView2.LaunchingExternalUriScheme" -->
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel">
+            <summary>
+            Desired <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel"/> of a WebView.
+            </summary>
+            <remarks>
+            An app may set <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/> to indicate desired memory consumption level of WebView.
+            Scripts will not be impacted and continue to run.
+            This is useful for inactive apps that still want to run scripts and/or keep network connections alive and therefore could not call <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.TrySuspendAsync"/> and <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume"/> to reduce memory consumption.
+            These apps can set memory usage target level to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Low"/> when the app becomes inactive, and set back to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Normal"/> when the app becomes active.
+            
+            It is not necessary to set CoreWebView2Controller's IsVisible property to false when setting the property.
+            
+            It is a best effort operation to change memory usage level, and the API will return before the operation completes.
+            
+            Setting the level to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Low"/> could potentially cause memory for some WebView browser processes to be swapped out to disk in some circumstances. It is a best effort to reduce memory usage as much as possible.
+            If a script runs after its related memory has been swapped out, the memory will be swapped back in to ensure the script can still run, but performance might be impacted.
+            Therefore, the app should set the level back to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Normal"/> when the app becomes active again. Setting memory usage target level back to normal will not happen automatically.
+            
+            An app should choose to use either the combination of <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.TrySuspendAsync"/> and <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume"/> or the combination of setting MemoryUsageTargetLevel to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Low"/> and <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Normal"/>. It is not advisable to mix them.
+            Trying to set <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/> while suspended will be ignored.
+            The <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.TrySuspendAsync"/> and <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume"/> methods will change the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/>.
+            <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.TrySuspendAsync"/> will automatically set <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/> to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Low"/> while <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume"/> on suspended WebView will automatically set <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/> to <see cref="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Normal"/>.
+            Calling <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Resume"/> when the WebView is not suspended would not change <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2.MemoryUsageTargetLevel"/>.
+            </remarks>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2Certificate">
             <summary>
@@ -3328,6 +3344,9 @@
             <summary>
             Multiple profiles can be created under a single user data directory but with separated cookies, user preference settings, and various data storage etc.. If the CoreWebView2 was created with a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ControllerOptions"/>, the CoreWebView2Profile will match those specified options. Otherwise if this CoreWebView2 was created without a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ControllerOptions"/>, then this will be the default CoreWebView2Profile for the corresponding CoreWebView2Environment.
             </summary>
+            <summary>
+            Multiple profiles can be created under a single user data directory but with separated cookies, user preference settings, and various data storage etc.. If the CoreWebView2 was created with a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ControllerOptions"/>, the CoreWebView2Profile will match those specified options. Otherwise if this CoreWebView2 was created without a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2ControllerOptions"/>, then this will be the default CoreWebView2Profile for the corresponding CoreWebView2Environment.
+            </summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearBrowsingDataAsync(Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds,System.DateTime,System.DateTime)">
             <summary>
@@ -3444,6 +3463,26 @@
             All CoreWebView2s associated with this profile share the same cookie values. Changes to cookies in this cookie manager apply to all CoreWebView2s associated with this profile.
             </remarks>
             <seealso cref="T:Microsoft.Web.WebView2.Core.CoreWebView2CookieManager"/>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled">
+            <summary>
+            Determines whether password information will be autosaved.
+            </summary>
+            <remarks>
+            When disabled, no new password data is saved and no Save/Update Password prompts are displayed. However, if there was password data already saved before disabling this setting, then that password information is auto-populated, suggestions are shown and clicking on one will populate the fields.
+            When enabled, password information is auto-populated, suggestions are shown and clicking on one will populate the fields, new data is saved, and a Save/Update Password prompt is displayed. The default value is <c>false</c>. It will apply immediately after setting.
+            This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPasswordAutosaveEnabled"/>, and changing one will change the other. All WebView2s with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile"/> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPasswordAutosaveEnabled"/> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled"/> will always have the same value.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled">
+            <summary>
+            Determines whether general form information will be saved and autofilled.
+            </summary>
+            <remarks>
+            General autofill information includes information like names, street and email addresses, phone numbers, and arbitrary input. This excludes password information. When disabled, no suggestions appear, and no new information is saved.
+            When enabled, information is saved, suggestions appear, and clicking on one will populate the form fields. The default value is <c>true</c>. It will apply immediately after setting.
+            This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsGeneralAutofillEnabled"/>, and changing one will change the other. All WebView2s  with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile"/> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsGeneralAutofillEnabled"/> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled"/> will always have the same value.
+            </remarks>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2Deferral">
             <summary>
@@ -4615,6 +4654,21 @@
             First or second X button up mouse event, <c>WM_XBUTTONUP</c>.
             </summary>
         </member>
+        <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel">
+            <summary>
+            Desired memory consumption level of a WebView.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Normal">
+            <summary>
+            Normal memory usage target level.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2MemoryUsageTargetLevel.Low">
+            <summary>
+            Low memory usage target level. Used for inactivate WebView for reduced memory consumption.
+            </summary>
+        </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2KeyEventKind">
             <summary>
             Specifies the key event kind that raises an <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2Controller.AcceleratorKeyPressed"/> event.
@@ -5679,6 +5733,7 @@
             <remarks>
             When disabled, no new password data is saved and no Save/Update Password prompts are displayed. However, if there was password data already saved before disabling this setting, then that password information is auto-populated, suggestions are shown and clicking on one will populate the fields.
             When enabled, password information is auto-populated, suggestions are shown and clicking on one will populate the fields, new data is saved, and a Save/Update Password prompt is displayed. The default value is <c>false</c>. It will apply immediately after setting.
+            This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled"/>, and changing one will change the other. All WebView2s with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile"/> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsPasswordAutosaveEnabled"/> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsPasswordAutosaveEnabled"/> will always have the same value.
             </remarks>
             <example>
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="PasswordAutosaveEnabled":::
@@ -5691,6 +5746,7 @@
             <remarks>
             General autofill information includes information like names, street and email addresses, phone numbers, and arbitrary input. This excludes password information. When disabled, no suggestions appear, and no new information is saved.
             When enabled, information is saved, suggestions appear, and clicking on one will populate the form fields. The default value is <c>true</c>. It will apply immediately after setting.
+            This property has the same value as <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled"/>, and changing one will change the other. And all WebView2s that created with the same <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Profile"/> will share the same value for this property, so for the WebView2s with the same profile, their <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Settings.IsGeneralAutofillEnabled"/> and <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.IsGeneralAutofillEnabled"/> will always have the same value.
             </remarks>
             <example>
             :::code language="csharp" source="../code/sample/SampleApps/WebView2WpfBrowser/MainWindow.xaml.cs" id="GeneralAutofillEnabled":::
@@ -6736,6 +6792,42 @@
             </summary>
             <remarks>
             If the app has moved the focus to another desired location, it should set Handled property to <c>true</c>. When <c>Handled</c> property is <c>false</c> after the event handler returns, default action is taken. The default action is to try to find the next tab stop child window in the app and try to move focus to that window. If no other window exists to move focus, focus is cycled within the web content of the WebView.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs">
+            <summary>
+            Event args for the <see cref="E:Microsoft.Web.WebView2.Core.CoreWebView2.LaunchingExternalUriScheme"/> event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.Uri">
+            <summary>
+            Gets the URI with the external URI scheme to be launched.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.InitiatingOrigin">
+            <summary>
+            Gets the origin initiating the external URI scheme launch.
+            </summary>
+            <remarks>
+            The origin will be an empty string if the request is initiated by calling <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2.Navigate(System.String)"/> on the external URI scheme. If a script initiates the navigation, the `InitiatingOrigin` will be the top-level document's `Source`, i.e. if `window.location` is set to `"calculator://", the `InitiatingOrigin` will be set to `calculator://`. If the request is initiated from a child frame, the `InitiatingOrigin` will be the source of that child frame.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.IsUserInitiated">
+            <summary>
+            <c>true</c> when the launching external URI scheme request was initiated through a user gesture.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.Cancel">
+            <summary>
+            Determines whether to cancel the navigation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2LaunchingExternalUriSchemeEventArgs.GetDeferral">
+            <summary>
+            Gets a <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2Deferral"/> object and put the event into a deferred state.
+            </summary>
+            <remarks>
+            Use this to <see cref="M:Microsoft.Web.WebView2.Core.CoreWebView2Deferral.Complete"/> the launching external URI scheme request at a later time.
             </remarks>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2FrameInfo">

@@ -1,3 +1,2 @@
-2023/06/19-18:30:19.067 1f8c Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2023/06/19-18:30:19.070 1f8c Recovering log #6
-2023/06/19-18:30:19.073 1f8c Reusing old log D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000006.log 
+2023/06/27-00:17:23.298 2c14 Creating DB D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb since it was missing.
+2023/06/27-00:17:23.345 2c14 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001

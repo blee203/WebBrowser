@@ -1,3 +1,2 @@
-2023/06/19-18:30:23.816 1f8c Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
-2023/06/19-18:30:23.818 1f8c Recovering log #4
-2023/06/19-18:30:23.820 1f8c Reusing old log D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/000004.log 
+2023/06/27-00:17:33.313 2c14 Creating DB D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage since it was missing.
+2023/06/27-00:17:33.338 2c14 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001

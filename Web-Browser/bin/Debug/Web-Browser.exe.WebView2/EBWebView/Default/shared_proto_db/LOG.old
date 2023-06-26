@@ -1,3 +1,2 @@
-2023/05/16-01:45:27.689 1140 Reusing MANIFEST C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\shared_proto_db/MANIFEST-000001
-2023/05/16-01:45:27.690 1140 Recovering log #3
-2023/05/16-01:45:27.691 1140 Reusing old log C:\Users\bichl\Documents\Zalo Received Files\Web-Browser\Web-Browser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\shared_proto_db/000003.log 
+2023/06/27-00:17:21.883 2544 Creating DB D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\shared_proto_db since it was missing.
+2023/06/27-00:17:21.889 2544 Reusing MANIFEST D:\WebBrowser\Web-Browser\bin\Debug\Web-Browser.exe.WebView2\EBWebView\Default\shared_proto_db/MANIFEST-000001
