@@ -141,7 +141,13 @@ namespace Web_Browser
         }
         private void toolStripButton3_Click(object sender, EventArgs e)//nút tải lại
         {
-            webB.CoreWebView2.Reload();
+            if(tabControl1.SelectedTab.Contains(webB))
+                webB.CoreWebView2.Reload();
+            else
+            {
+                closeTabButton.PerformClick();
+                historyToolStripMenuItem1.PerformClick();
+            }
         }
         private void toolStripButton4_Click(object sender, EventArgs e)//nút dừng tải
         {
@@ -317,6 +323,8 @@ namespace Web_Browser
             using (var s1 = File.Create("H_URL.txt"))
             using (var s2 = File.Create("H_DateTime.txt")) { }
             updateH();
+            if(!tabControl1.SelectedTab.Contains(webB))
+                reloadButton.PerformClick();
         }
         private void historyToolStripMenuItem1_Click(object sender, EventArgs e)//open history view
         {
